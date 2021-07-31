@@ -44,6 +44,9 @@ A/B Testing:
 
 
  ## ChangeLog
+ ### 0.0.5
+ - Android Fixes:
+    - Fixed Initialization of ByteBrew on re-open or after first launch of the app/game 
  ### 0.0.4
  - First launch of ByteBrew SDK availible for GameMaker Mobile Developers
 

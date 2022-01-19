@@ -37,13 +37,26 @@ A/B Testing:
 
  Create your ByteBrew account to access the [dashboard](https://dashboard.bytebrew.io/register), or if you do have an account login [here](https://dashboard.bytebrew.io/login).
 
-
+## Updating The SDK
+Remove the current SDK "ByteBrewSDK" from your extensions folder.
+Then download the extension from this github to install straight into your project, and re-input your SDK Keys.
 
  ## Community
  Join our Community of Developers on Discord [here](https://discord.gg/sAp4f3tJte)! 
 
 
  ## ChangeLog
+ ### 0.0.6
+ - Update to ByteBrew GameMaker SDK
+ - Additions:
+    - Push Notifications: Launch of Push Notifications in ByteBrew with a one line of code integration in the SDK! Method "StartPushNotifications".
+    - Custom User Data Attributes: Add Key-Value Pair attributes to your user for segmentation use.
+    - Remote Config Read Check: New method called "HasRemoteConfigsBeenSet" to check whether remote configs have been retrieved without a callback, boolean string "true" or "false" return.
+    - Get User ID: Ability to retrieve the ByteBrew User ID for your reference, mostly to use for push notifications. Method name "GetUserID".
+- Notes:
+    - Checkout documentation for further use of Push Notifications and more.
+    - To Properly update the SDK, make sure to remove the whole "ByteBrewSDK" extension and reimport the new SDK, and don't forget to re-input your SDK Keys.
+    
  ### 0.0.5
  - Android Fixes:
     - Fixed Initialization of ByteBrew on re-open or after first launch of the app/game 

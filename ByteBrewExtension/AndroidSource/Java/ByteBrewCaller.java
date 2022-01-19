@@ -1,5 +1,6 @@
 package ${YYAndroidPackageName};
 
+import com.bytebrew.bytebrewgamemakerandroidlib.ByteBrewPushNotifications;
 import com.yoyogames.runner.RunnerJNILib;
 import ${YYAndroidPackageName}.RunnerActivity;
 import com.bytebrew.bytebrewgamemakerandroidlib.ByteBrewHandler;
@@ -13,11 +14,84 @@ import org.json.JSONObject;
 
 public class ByteBrewCaller {
 
+    private boolean initializationCalled = false;
+
     public void InitializeByteBrew(String appID, String appKey, String engineVersion, String buildVersion)
     {
-        ByteBrewListener.CreateListeners(RunnerActivity.CurrentActivity);
+        ByteBrewListener.CreateListeners(RunnerActivity.CurrentActivity.getApplication());
 
         ByteBrewHandler.InitializeByteBrew(appID, appKey, engineVersion, buildVersion, RunnerActivity.CurrentActivity.getApplicationContext().getPackageName(), RunnerActivity.CurrentActivity.getApplicationContext());
+        initializationCalled = true;
+    }
+
+    public void StartPushNotifications()
+    {
+        if(!initializationCalled) {
+            Log.w("ByteBrew Warning", "You must call InitializeByteBrew first.");
+            return;
+        }
+
+        ByteBrewPushNotifications.StartByteBrewPushNotifications(RunnerActivity.CurrentActivity);
+    }
+
+    public void SetCustomUserDataAttributeWithNumeric(String key, double value)
+    {
+        JSONObject data = new JSONObject();
+        try {
+            data.put("key", key);
+            data.put("value", Double.toString(value));
+            data.put("type", "double");
+
+            ByteBrewHandler.SendCustomDataAttributes(data.toString());
+        }
+        catch (JSONException exception) {
+            Log.i("ByteBrew Exception", exception.getMessage());
+        }
+    }
+
+    public void SetCustomUserDataAttributeWithString(String key, String value)
+    {
+        JSONObject data = new JSONObject();
+        try {
+            data.put("key", key);
+            data.put("value", value);
+            data.put("type", "string");
+
+            ByteBrewHandler.SendCustomDataAttributes(data.toString());
+        }
+        catch (JSONException exception) {
+            Log.i("ByteBrew Exception", exception.getMessage());
+        }
+    }
+
+    public void SetCustomUserDataAttributeWithInt(String key, String value)
+    {
+        JSONObject data = new JSONObject();
+        try {
+            data.put("key", key);
+            data.put("value", value);
+            data.put("type", "integer");
+
+            ByteBrewHandler.SendCustomDataAttributes(data.toString());
+        }
+        catch (JSONException exception) {
+            Log.i("ByteBrew Exception", exception.getMessage());
+        }
+    }
+
+    public void SetCustomUserDataAttributeWithBool(String key, String value)
+    {
+        JSONObject data = new JSONObject();
+        try {
+            data.put("key", key);
+            data.put("value", Boolean.toString(Boolean.parseBoolean(value)));
+            data.put("type", "boolean");
+
+            ByteBrewHandler.SendCustomDataAttributes(data.toString());
+        }
+        catch (JSONException exception) {
+            Log.i("ByteBrew Exception", exception.getMessage());
+        }
     }
 
     public void AddNewCustomEvent(String eventName)
@@ -162,6 +236,9 @@ public class ByteBrewCaller {
 
     public void NewTrackedAdEvent(String placementType, String adLocation)
     {
+        if(!placementType.equals("Reward") && !placementType.equals("Interstitial") && !placementType.equals("Banner")) {
+            Log.w("ByteBrew Warning", "Placement Type must be either, Reward, Interstitial, or Banner. This will cause a error in future SDKs, so please update to these strings.");
+        }
 
         JSONObject event = new JSONObject();
         try {
@@ -185,6 +262,10 @@ public class ByteBrewCaller {
     public void NewTrackedAdEventWithAdID(String placementType, String adLocation, String AdID)
     {
 
+        if(!placementType.equals("Reward") && !placementType.equals("Interstitial") && !placementType.equals("Banner")) {
+            Log.w("ByteBrew Warning", "Placement Type must be either, Reward, Interstitial, or Banner. This will cause a error in future SDKs, so please update to these strings.");
+        }
+
         JSONObject event = new JSONObject();
         try {
 
@@ -207,6 +288,10 @@ public class ByteBrewCaller {
 
     public void NewTrackedAdEventWithAllOptions(String placementType, String adLocation, String AdID, String adProvider)
     {
+
+        if(!placementType.equals("Reward") && !placementType.equals("Interstitial") && !placementType.equals("Banner")) {
+            Log.w("ByteBrew Warning", "Placement Type must be either, Reward, Interstitial, or Banner. This will cause a error in future SDKs, so please update to these strings.");
+        }
 
         JSONObject event = new JSONObject();
         try {
@@ -300,5 +385,15 @@ public class ByteBrewCaller {
     {
         ByteBrewHandler.StopTracking(RunnerActivity.CurrentActivity.getApplicationContext());
 
+    }
+
+    public Boolean HasRemoteConfigsBeenSet()
+    {
+        return ByteBrewHandler.IsRemoteConfigsSet();
+    }
+
+    public String GetUserID()
+    {
+        return ByteBrewHandler.GetUserID();
     }
 }

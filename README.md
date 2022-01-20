@@ -7,6 +7,9 @@
 Real-Time Analytics:
  - Engagement Analytics: Automatically start tracking your game’s key performance indicators such as new user events, DAU, session length, playtime, and retention reporting
  - Custom Filtering: Breakdown and segment your players using custom filters such as; device type, geography, build version, and date ranges
+ 
+ Push Notifications:
+  - Send Cross-Platform Cloud Notifications to your players around the globe with ByteBrew's Push Notifications.
 
 Player Progression:
  - Game level statistics tracking to breakdown level wins, fails, scores and more.

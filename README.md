@@ -49,6 +49,13 @@ Then download the extension from this github to install straight into your proje
 
 
  ## ChangeLog
+  ### 0.0.6.1
+ - Update to ByteBrew GameMaker SDK
+ - Changes:
+    - SDK change for Android with Google ADID Policy Compliance Update.
+- Notes:
+    - To Properly update the SDK, make sure to remove the whole "ByteBrewSDK" extension and reimport the new SDK, and don't forget to re-input your SDK Keys.
+
  ### 0.0.6
  - Update to ByteBrew GameMaker SDK
  - Additions:

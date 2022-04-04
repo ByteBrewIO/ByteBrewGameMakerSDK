@@ -49,6 +49,13 @@ Then download the extension from this github to install straight into your proje
 
 
  ## ChangeLog
+ ### 0.0.7
+ - Update to ByteBrew GameMaker SDK
+ - Additions:
+    - Update with Purchase Validation Callback.
+- Notes:
+    - To Properly update the SDK, make sure to remove the whole "ByteBrewSDK" extension and reimport the new SDK.
+ 
  ### 0.0.6.1
  - Update to ByteBrew GameMaker SDK
  - Changes:

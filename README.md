@@ -49,6 +49,15 @@ Then download the extension from this github to install straight into your proje
 
 
  ## ChangeLog
+### 0.1.4
+ - Update to ByteBrew GameMaker SDK
+ - Updates:
+    - Minor iOS updates.
+    - Updates for Google Ads Attribution.
+    - iOS updates for Privacy Manifest, look at docs for integration.
+- Notes:
+    - To Properly update the SDK, make sure to remove the whole "ByteBrewSDK" extension and reimport the new SDK.
+ 
 ### 0.1.3
  - Update to ByteBrew GameMaker SDK
  - Updates:

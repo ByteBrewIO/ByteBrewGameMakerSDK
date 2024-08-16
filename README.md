@@ -49,6 +49,13 @@ Then download the extension from this github to install straight into your proje
 
 
  ## ChangeLog
+### 0.1.5
+ - Update to ByteBrew GameMaker SDK
+ - Updates:
+    - Minor Android updates.
+- Notes:
+    - To Properly update the SDK, make sure to remove the whole "ByteBrewSDK" extension and reimport the new SDK.
+ 
 ### 0.1.4
  - Update to ByteBrew GameMaker SDK
  - Updates:
